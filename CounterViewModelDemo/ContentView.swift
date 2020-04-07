@@ -9,8 +9,19 @@
 import SwiftUI
 
 struct ContentView: View {
+  @ObservedObject var counterVM = CounterViewModel()
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            Text(String(counterVM.value))
+            HStack{
+            Button("Increment"){
+                self.counterVM.increment()
+                }.padding()
+            Button("Decrement"){
+                self.counterVM.decrement()
+                }.padding()
+            }
+        }
     }
 }
 
